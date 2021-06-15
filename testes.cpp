@@ -19,7 +19,7 @@ struct cotacao
 
 map<string, vector<cotacao>> historicoBovespa;
 
-void addCotacao(string sigla,  string data, int valor)
+void addCotacao(string sigla, string data, int valor)
 {
   cotacao minhaCotacao;
   minhaCotacao.data = data;
@@ -43,6 +43,21 @@ int main()
   while (vPtr != historicoBovespa.end())
   {
     cout << "acao: " << (*vPtr).first << " possui " << (*vPtr).second.size() << " registros" << endl;
+    vPtr++;
+  }
+
+  vPtr = historicoBovespa.begin();
+  while (vPtr != historicoBovespa.end())
+  {
+    cout << "acao: " << (*vPtr).first << " ";
+
+    vector<cotacao>::iterator v2Ptr = historicoBovespa[(*vPtr).first].begin();
+    while (v2Ptr != historicoBovespa[(*vPtr).first].end())
+    {
+      cout << "data: " << (*v2Ptr).data << " valor: " << (*v2Ptr).valor << " | ";
+      v2Ptr++;
+    }
+    cout << endl;
     vPtr++;
   }
 
